@@ -3,6 +3,14 @@ Rails.application.routes.draw do
   root 'dashboard#index'
 
   resources :students
+
+  #login page with form
+  get '/login' => 'sessions#new'
  
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  #create(post) action for when login for is submitted
+  post '/login' => 'sessions#create'
+
+  #delete action to logout
+  delete '/logout' => 'sessions#destroy'
+
 end
