@@ -9,8 +9,9 @@ class SessionsController < ApplicationController
 
 	  if student && student.authenticate(params[:login][:password])
 	  	session[:std_id] = student.id.to_s
-	  	redirect_to root_path
+	  	redirect_to root_path, notice: 'Successfully logged in!'
 	  else
+	  	flash.now.alert = "Incorrect student_id or password, try again."
 	  	render :new
 	  	
 	  end
